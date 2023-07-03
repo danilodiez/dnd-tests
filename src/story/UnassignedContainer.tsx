@@ -52,7 +52,7 @@ export const UnassignedContainer = () => {
 
   useDndMonitor({
     onDragEnd(e) {
-      if (e.over) {
+      if (e.over.id === 'droppable-unassigned' && e.active.id.includes('draggable-folder')) {
         addNewNode(currentNode);
       }
     },

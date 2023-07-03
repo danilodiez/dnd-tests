@@ -8,8 +8,8 @@ import {
   ChevronSmallLeft,
   CloseMedium,
 } from "@elliemae/ds-icons";
-import { useDraggable } from "@dnd-kit/core";
-import {DraggableElement} from "./DraggableElement";
+import { useDroppable, useDndMonitor } from "@dnd-kit/core";
+import { DraggableElement } from "./DraggableElement";
 
 const data = {
   dsId: "__root",
@@ -52,9 +52,22 @@ export const DocFoldersContainer = () => {
     [addNode, availableId, getRoot]
   );
 
+  const { isOver, setNodeRef } = useDroppable({
+    id: `droppable-folders`,
+  });
+  const style = {
+    border: isOver ? "2px solid green" : "2px solid red",
+  };
+  useDndMonitor({
+    onDragEnd(e) {
+      if (e.over.id === 'droppable-folders' && e.active.id.includes('draggable-unassigned')) {
+        addNewNode(currentNode);
+      }
+    },
+  });
   return (
     <Grid>
-      <Grid gutter="xs" cols={["400px"]}>
+      <Grid gutter="xs" cols={["400px"]} ref={setNodeRef} style={style}>
         <DSButtonV2
           disabled={!currentNode.parent}
           onClick={() => setCurrentNode(currentNode.parent)}
@@ -62,28 +75,26 @@ export const DocFoldersContainer = () => {
         >
           <ChevronSmallLeft />
         </DSButtonV2>
-        {currentNode.children.map((model) => 
-          (
-            <DraggableElement id='draggable-folder' model={model}>
-              <DSButtonV2
-                onClick={() => removeNode(model.dsId)}
-                buttonType="icon"
-              >
-                <CloseMedium />
-              </DSButtonV2>
-              <DSButtonV2
-                disabled={!model.children.length}
-                onClick={() => setCurrentNode(model)}
-                buttonType="icon"
-              >
-                <ArrowShortReturn />
-              </DSButtonV2>
-              <DSButtonV2 onClick={() => addNewNode(model)} buttonType="icon">
-                <Add />
-              </DSButtonV2>
-              </DraggableElement>
-          )
-        )}
+        {currentNode.children.map((model) => (
+          <DraggableElement id="draggable-folder" model={model}>
+            <DSButtonV2
+              onClick={() => removeNode(model.dsId)}
+              buttonType="icon"
+            >
+              <CloseMedium />
+            </DSButtonV2>
+            <DSButtonV2
+              disabled={!model.children.length}
+              onClick={() => setCurrentNode(model)}
+              buttonType="icon"
+            >
+              <ArrowShortReturn />
+            </DSButtonV2>
+            <DSButtonV2 onClick={() => addNewNode(model)} buttonType="icon">
+              <Add />
+            </DSButtonV2>
+          </DraggableElement>
+        ))}
         <DSButtonV2
           onClick={() => addNewNode(currentNode)}
           buttonType="outline"
