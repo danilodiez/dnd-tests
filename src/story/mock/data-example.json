@@ -1,0 +1,210 @@
+{
+  "id": "pseudoroot",
+  "subitems": [
+    {
+      "id": "1",
+      "subitems": [
+        {
+          "id": "11",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 11,
+            "name": "File 1",
+            "isGroup": false
+          }
+        },
+        {
+          "id": "12",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 12,
+            "name": "File 2",
+            "isGroup": false
+          }
+        },
+        {
+          "id": "13",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 13,
+            "name": "File 3",
+            "isGroup": false
+          }
+        }
+      ],
+      "originalNodeData": {
+        "id": 1,
+        "name": "Folder 1",
+        "isGroup": true
+      }
+    },
+    {
+      "id": "2",
+      "subitems": [
+        {
+          "id": "21",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 21,
+            "name": "File 1",
+            "isGroup": false
+          }
+        },
+        {
+          "id": "22",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 22,
+            "name": "File 2",
+            "isGroup": false
+          }
+        },
+        {
+          "id": "23",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 23,
+            "name": "File 3",
+            "isGroup": false
+          }
+        }
+      ],
+      "originalNodeData": {
+        "id": 2,
+        "name": "Folder 2",
+        "isGroup": true
+      }
+    },
+    {
+      "id": "3",
+      "subitems": [
+        {
+          "id": "31",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 31,
+            "name": "File 1",
+            "isGroup": false
+          }
+        },
+        {
+          "id": "32",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 32,
+            "name": "File 2",
+            "isGroup": false
+          }
+        },
+        {
+          "id": "33",
+          "subitems": [],
+          "originalNodeData": {
+            "id": 33,
+            "name": "File 3",
+            "isGroup": false
+          }
+        }
+      ],
+      "originalNodeData": {
+        "id": 3,
+        "name": "Folder 3",
+        "isGroup": true
+      }
+    },
+    {
+      "id": "4",
+      "subitems": [
+        {
+          "id": "41",
+          "subitems": [
+            {
+              "id": "411",
+              "subitems": [
+                {
+                  "id": "4111",
+                  "subitems": [],
+                  "originalNodeData": {
+                    "id": 4111,
+                    "name": "File 1",
+                    "isGroup": false
+                  }
+                },
+                {
+                  "id": "4112",
+                  "subitems": [],
+                  "originalNodeData": {
+                    "id": 4112,
+                    "name": "File 2",
+                    "isGroup": false
+                  }
+                },
+                {
+                  "id": "4113",
+                  "subitems": [],
+                  "originalNodeData": {
+                    "id": 4113,
+                    "name": "File 3",
+                    "isGroup": false
+                  }
+                }
+              ],
+              "originalNodeData": {
+                "id": 411,
+                "name": "Folder 4 - 1 -1",
+                "isGroup": true
+              }
+            },
+            {
+              "id": "412",
+              "subitems": [
+                {
+                  "id": "4121",
+                  "subitems": [],
+                  "originalNodeData": {
+                    "id": 4121,
+                    "name": "File 1",
+                    "isGroup": false
+                  }
+                },
+                {
+                  "id": "4122",
+                  "subitems": [],
+                  "originalNodeData": {
+                    "id": 4122,
+                    "name": "File 2",
+                    "isGroup": false
+                  }
+                },
+                {
+                  "id": "4123",
+                  "subitems": [],
+                  "originalNodeData": {
+                    "id": 4123,
+                    "name": "File 3",
+                    "isGroup": false
+                  }
+                }
+              ],
+              "originalNodeData": {
+                "id": 412,
+                "name": "Folder 4 - 2 -1",
+                "isGroup": true
+              }
+            }
+          ],
+          "originalNodeData": {
+            "id": 41,
+            "name": "Folder 4 - 2",
+            "isGroup": true
+          }
+        }
+      ],
+      "originalNodeData": {
+        "id": 4,
+        "name": "Folder 4 (we get fancy from here)",
+        "isGroup": true
+      }
+    }
+  ]
+}
