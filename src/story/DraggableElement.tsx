@@ -1,34 +1,41 @@
 import { useDroppable, useDndMonitor, useDraggable } from "@dnd-kit/core";
 import { Grid } from "@elliemae/ds-grid";
+import { GripperVertical } from "@elliemae/ds-icons";
+import { DSButtonV2 } from "@elliemae/ds-button";
 
-export const DraggableElement = ({ id, model, children }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: `${id}-${model.dsId}`,
-    data: model,
-  });
+export const DraggableElement = ({ dragPrefix, model, children, node }) => {
+  const { attributes, listeners, setNodeRef, transform, setActivatorNodeRef } =
+    useDraggable({
+      id: `draggable-${dragPrefix}-${model.id}`,
+      data: node,
+    });
   const style = transform
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
         border: "2px solid blue",
       }
-    : { border: "2px solid green" };
+    : { border: "" };
 
   return (
     <Grid
-      cols={["auto", "min-content", "min-content", "min-content"]}
-      gutter="xs"
+      cols={["36px", "1fr"]}
       border="1px solid neutral-100"
-      height="48px"
-      alignItems="center"
+      alignItems="flex-start"
       p="xxs"
-      data-depth={model.depth}
-      data-parentId={model.parent.dsId}
+      bg="white"
+      data-depth={model?.depth}
       ref={setNodeRef}
       style={style}
-      {...listeners}
       {...attributes}
     >
-      <Grid>{model.plainItem.label}</Grid>
+      <DSButtonV2
+        buttonType="icon"
+        aria-label="Drag and Drop Handler"
+        {...listeners}
+        ref={setActivatorNodeRef}
+      >
+        <GripperVertical />
+      </DSButtonV2>
       {children}
     </Grid>
   );

@@ -52,6 +52,9 @@ export const UnassignedContainer = () => {
 
   useDndMonitor({
     onDragEnd(e) {
+      if (e.over.id === 'droppable-folders' && e.active.id.includes('draggable-unassigned')){
+        removeNode(e.active.data.current.dsId);
+      }
       if (e.over.id === 'droppable-unassigned' && e.active.id.includes('draggable-folder')) {
         addNewNode(currentNode);
       }
@@ -67,7 +70,7 @@ export const UnassignedContainer = () => {
     <Grid>
       <Grid gutter="xs" cols={["350px"]} ref={setNodeRef} style={style}>
         {currentNode.children.map((model) => (
-          <DraggableElement id="draggable-unassigned" model={model}>
+          <div>
             <DSButtonV2
               onClick={() => removeNode(model.dsId)}
               buttonType="icon"
@@ -77,7 +80,7 @@ export const UnassignedContainer = () => {
             <DSButtonV2 onClick={() => {}} buttonType="icon">
               <MoreOptionsVert />
             </DSButtonV2>
-          </DraggableElement>
+          </div>
         ))}
         <DSButtonV2
           onClick={() => addNewNode(currentNode)}

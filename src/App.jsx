@@ -9,18 +9,20 @@ import { DndContext } from "@dnd-kit/core";
 import { ExampleTree } from "./story/ExampleTree";
 
 const theme = getDefaultTheme();
-
-export default function App() {
-  return (
-    <ThemeProvider theme={theme}>
+const FirstDnDTest = () => (
       <DndContext>
         <UnassignedContainer />
         <DocFoldersContainer />
       </DndContext>
-
+)
+export default function App() {
+  return (
+    <ThemeProvider theme={theme}>
       <div>
-        <h1>Yuri components preview:</h1>
+        <h1>New Tree preview:</h1>
+      <DndContext>
         <ExampleTree />
+      </DndContext>
       </div>
     </ThemeProvider>
   );

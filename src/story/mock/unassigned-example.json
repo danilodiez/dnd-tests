@@ -1,0 +1,45 @@
+{
+  "id": "pseudoroot",
+  "subitems": [
+    {
+      "id": "un1",
+      "originalNodeData": {
+        "id": 111,
+        "name": "File 1",
+        "isGroup": false
+      }
+    },
+    {
+      "id": "un2",
+      "originalNodeData": {
+        "id": 112,
+        "name": "File 2",
+        "isGroup": false
+      }
+    },
+    {
+      "id": "un3",
+      "originalNodeData": {
+        "id": 113,
+        "name": "File 3",
+        "isGroup": false
+      }
+    },
+    {
+      "id": "un4",
+      "originalNodeData": {
+        "id": 114,
+        "name": "File 4",
+        "isGroup": false
+      }
+    },
+    {
+      "id": "un5",
+      "originalNodeData": {
+        "id": 115,
+        "name": "File 5",
+        "isGroup": false
+      }
+    }
+  ]
+}

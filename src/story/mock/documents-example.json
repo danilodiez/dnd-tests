@@ -9,7 +9,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 11,
-            "name": "File 1",
+            "name": "Attachment 1",
             "isGroup": false
           }
         },
@@ -18,7 +18,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 12,
-            "name": "File 2",
+            "name": "Attachment 2",
             "isGroup": false
           }
         },
@@ -27,7 +27,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 13,
-            "name": "File 3",
+            "name": "Attachment 3",
             "isGroup": false
           }
         }
@@ -46,7 +46,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 21,
-            "name": "File 1",
+            "name": "Attachment 1",
             "isGroup": false
           }
         },
@@ -55,7 +55,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 22,
-            "name": "File 2",
+            "name": "Attachment 2",
             "isGroup": false
           }
         },
@@ -64,7 +64,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 23,
-            "name": "File 3",
+            "name": "Attachment 3",
             "isGroup": false
           }
         }
@@ -83,7 +83,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 31,
-            "name": "File 1",
+            "name": "Attachment 1",
             "isGroup": false
           }
         },
@@ -92,7 +92,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 32,
-            "name": "File 2",
+            "name": "Attachment 2",
             "isGroup": false
           }
         },
@@ -101,7 +101,7 @@
           "subitems": [],
           "originalNodeData": {
             "id": 33,
-            "name": "File 3",
+            "name": "Attachment 3",
             "isGroup": false
           }
         }
@@ -126,7 +126,7 @@
                   "subitems": [],
                   "originalNodeData": {
                     "id": 4111,
-                    "name": "File 1",
+                    "name": "Attachment 1",
                     "isGroup": false
                   }
                 },
@@ -135,7 +135,7 @@
                   "subitems": [],
                   "originalNodeData": {
                     "id": 4112,
-                    "name": "File 2",
+                    "name": "Attachment 2",
                     "isGroup": false
                   }
                 },
@@ -144,7 +144,7 @@
                   "subitems": [],
                   "originalNodeData": {
                     "id": 4113,
-                    "name": "File 3",
+                    "name": "Attachment 3",
                     "isGroup": false
                   }
                 }
@@ -163,7 +163,7 @@
                   "subitems": [],
                   "originalNodeData": {
                     "id": 4121,
-                    "name": "File 1",
+                    "name": "Attachment 1",
                     "isGroup": false
                   }
                 },
@@ -172,7 +172,7 @@
                   "subitems": [],
                   "originalNodeData": {
                     "id": 4122,
-                    "name": "File 2",
+                    "name": "Attachment 2",
                     "isGroup": false
                   }
                 },
@@ -181,7 +181,7 @@
                   "subitems": [],
                   "originalNodeData": {
                     "id": 4123,
-                    "name": "File 3",
+                    "name": "Attachment 3",
                     "isGroup": false
                   }
                 }

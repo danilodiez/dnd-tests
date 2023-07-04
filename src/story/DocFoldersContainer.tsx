@@ -38,15 +38,11 @@ const options = {
 export const DocFoldersContainer = () => {
   const { addNode, getRoot, removeNode, getPath } = useDSTree(data, options);
   const [currentNode, setCurrentNode] = useState(getRoot());
-  const [availableId, setAvailableId] = useState(0);
+  const [availableId, setAvailableId] = useState(6);
 
   const addNewNode = useCallback(
     (parent) => {
-      const newLabel =
-        parent === getRoot()
-          ? `child ${parent.children.length + 10}`
-          : `${parent.plainItem.label}.${parent.children.length + 10}`;
-      addNode({ dsId: availableId.toString(), label: newLabel }, { parent });
+      addNode({ dsId: availableId.toString(), label: `doc folder ${availableId}`}, { parent });
       setAvailableId(availableId + 1);
     },
     [addNode, availableId, getRoot]
@@ -56,10 +52,13 @@ export const DocFoldersContainer = () => {
     id: `droppable-folders`,
   });
   const style = {
-    border: isOver ? "2px solid green" : "2px solid red",
+    border: isOver ? "2px solid green" : "",
   };
   useDndMonitor({
     onDragEnd(e) {
+      if (e.over.id === 'droppable-unassigned' && e.active.id.includes('draggable-folder')){
+        removeNode(e.active.data.current.dsId);
+      }
       if (e.over.id === 'droppable-folders' && e.active.id.includes('draggable-unassigned')) {
         addNewNode(currentNode);
       }
@@ -76,7 +75,7 @@ export const DocFoldersContainer = () => {
           <ChevronSmallLeft />
         </DSButtonV2>
         {currentNode.children.map((model) => (
-          <DraggableElement id="draggable-folder" model={model}>
+          <div>
             <DSButtonV2
               onClick={() => removeNode(model.dsId)}
               buttonType="icon"
@@ -93,7 +92,7 @@ export const DocFoldersContainer = () => {
             <DSButtonV2 onClick={() => addNewNode(model)} buttonType="icon">
               <Add />
             </DSButtonV2>
-          </DraggableElement>
+          </div>
         ))}
         <DSButtonV2
           onClick={() => addNewNode(currentNode)}
