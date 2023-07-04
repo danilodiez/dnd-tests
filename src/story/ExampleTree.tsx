@@ -6,7 +6,7 @@ import { BoxWithTitle } from "./parts/BoxWithTitle";
 import { FolderItem, FileItem } from "./parts/items";
 import { v4 as uuidv4 } from "uuid";
 
-import { DraggableElement } from "./DraggableElement";
+import { DraggableElement } from "./parts/DraggableElement";
 
 type FlatNode = {
   id: string;
@@ -64,18 +64,17 @@ export const ExampleTree = React.memo(() => {
         {FlatTreeWithoutRootDocs
           .filter((node) => node.plainItem.originalNodeData.isGroup)
           .map((node) => {
-          const item = { ...node.plainItem, depth: node.depth };
-          const children = node.children;
+            const item = { ...node.plainItem, depth: node.depth };
             return (
-            <DraggableElement dragPrefix="folder" model={item} node={node}>
-              <FolderItem
-                key={item.originalNodeData.id}
-                item={item}
-                children={children}
-              />
-            </DraggableElement>
-          );
-        })}
+              <DraggableElement dragPrefix="folder" model={item} node={node}>
+                <FolderItem
+                  key={item.originalNodeData.id}
+                  item={item}
+                  children={node.children}
+                />
+              </DraggableElement>
+            );
+          })}
       </BoxWithTitle>
     </div>
   );

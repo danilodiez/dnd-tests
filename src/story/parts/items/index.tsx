@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Grid } from "@elliemae/ds-grid";
 import { DSTypography } from "@elliemae/ds-typography";
 import { File, Folder, ChevronDown } from "@elliemae/ds-icons";
 import { styled } from "@elliemae/ds-system";
 import { DSButtonV2 } from "@elliemae/ds-button";
-import { DraggableElement } from "../../DraggableElement";
+import { DraggableElement } from "../DraggableElement";
 
 type FlatNode = {
   id: string;
@@ -47,7 +47,7 @@ export const FolderItem = React.memo(({ item, children }: ItemProps) => {
           <DSButtonV2
             buttonType="icon"
             aria-label="Button just need an aria label"
-            onClick={()=> setShowFiles((prev) => !prev)}
+            onClick={() => setShowFiles((prev) => !prev)}
           >
             <ChevronDown size="s" />
           </DSButtonV2>

@@ -11,9 +11,9 @@ export const DraggableElement = ({ dragPrefix, model, children, node }) => {
     });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-        border: "2px solid blue",
-      }
+      transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+      border: "2px solid blue",
+    }
     : { border: "" };
 
   return (
