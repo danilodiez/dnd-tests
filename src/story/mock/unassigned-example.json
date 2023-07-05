@@ -2,7 +2,7 @@
   "id": "pseudoroot",
   "subitems": [
     {
-      "id": "un1",
+      "id": "111",
       "originalNodeData": {
         "id": 111,
         "name": "File 1",
@@ -10,7 +10,7 @@
       }
     },
     {
-      "id": "un2",
+      "id": "112",
       "originalNodeData": {
         "id": 112,
         "name": "File 2",
@@ -18,7 +18,7 @@
       }
     },
     {
-      "id": "un3",
+      "id": "113",
       "originalNodeData": {
         "id": 113,
         "name": "File 3",
@@ -26,7 +26,7 @@
       }
     },
     {
-      "id": "un4",
+      "id": "114",
       "originalNodeData": {
         "id": 114,
         "name": "File 4",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "id": "un5",
+      "id": "115",
       "originalNodeData": {
         "id": 115,
         "name": "File 5",

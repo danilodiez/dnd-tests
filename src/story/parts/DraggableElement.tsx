@@ -3,11 +3,11 @@ import { Grid } from "@elliemae/ds-grid";
 import { GripperVertical } from "@elliemae/ds-icons";
 import { DSButtonV2 } from "@elliemae/ds-button";
 
-export const DraggableElement = ({ dragPrefix, model, children, node }) => {
+export const DraggableElement = ({ dragPrefix, model, children, node, ownerTree }) => {
   const { attributes, listeners, setNodeRef, transform, setActivatorNodeRef } =
     useDraggable({
       id: `draggable-${dragPrefix}-${model.id}`,
-      data: node,
+      data: { node, ownerTree },
     });
   const style = transform
     ? {

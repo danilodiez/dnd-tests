@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Test Folder X",
+    "children": [
+      {
+        "id": 2,
+        "name": "Test Item 1",
+        "children": []
+      },
+      {
+        "id": 3,
+        "name": "Test Folder XX",
+        "children": [
+          {
+            "id": 54,
+            "name": "Test Item 54",
+            "children": []
+          },
+          {
+            "id": 65,
+            "name": "Test Item 65",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Test Folder Y",
+    "children": [
+      {
+        "id": 5,
+        "name": "Test Item 2",
+        "children": []
+      },
+      {
+        "id": 6,
+        "name": "Test Item 3",
+        "children": []
+      }
+    ]
+  },
+  {
+    "children": [],
+    "id": 7,
+    "name": "Item with no children"
+  },
+  {
+    "children": [],
+    "id": 8,
+    "isGroup": true,
+    "name": "Item with no children but is group"
+  }
+]
