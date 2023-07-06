@@ -11,6 +11,7 @@
       {
         "id": 3,
         "name": "Test Folder XX",
+        "isGroup": true,
         "children": [
           {
             "id": 54,
@@ -29,14 +30,15 @@
   {
     "id": 4,
     "name": "Test Folder Y",
+    "isGroup": true,
     "children": [
       {
-        "id": 5,
+        "id": 45,
         "name": "Test Item 2",
         "children": []
       },
       {
-        "id": 6,
+        "id": 46,
         "name": "Test Item 3",
         "children": []
       }

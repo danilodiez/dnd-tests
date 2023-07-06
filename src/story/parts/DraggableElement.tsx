@@ -2,6 +2,7 @@ import { useDroppable, useDndMonitor, useDraggable } from "@dnd-kit/core";
 import { Grid } from "@elliemae/ds-grid";
 import { GripperVertical } from "@elliemae/ds-icons";
 import { DSButtonV2 } from "@elliemae/ds-button";
+import {useSortable} from '@dnd-kit/sortable';
 
 export const DraggableElement = ({ dragPrefix, model, children, node, ownerTree }) => {
   const { attributes, listeners, setNodeRef, transform, setActivatorNodeRef } =
@@ -9,6 +10,7 @@ export const DraggableElement = ({ dragPrefix, model, children, node, ownerTree 
       id: `draggable-${dragPrefix}-${model.id}`,
       data: { node, ownerTree },
     });
+
   const style = transform
     ? {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
