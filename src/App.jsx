@@ -44,11 +44,13 @@ export default function App() {
       <Grid cols={["40%", "60%"]}>
         <DndContext
           modifiers={[restrictToWindowEdges]}
+          sensors={sensors}
+          collisionDetection={closestCenter}
         >
           <ExampleTree />
-        </DndContext>
 
         <BoxWithTitle title="Document Viewer"></BoxWithTitle>
+        </DndContext>
       </Grid>
     </ThemeProvider>
   );

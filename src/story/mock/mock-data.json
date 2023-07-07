@@ -2,28 +2,49 @@
   {
     "id": 1,
     "name": "Test Folder X",
+    "isGroup": true,
     "children": [
       {
-        "id": 2,
-        "name": "Test Item 1",
+        "id": 11,
+        "name": "Test Item 11",
         "children": []
       },
       {
-        "id": 3,
-        "name": "Test Folder XX",
-        "isGroup": true,
-        "children": [
-          {
-            "id": 54,
-            "name": "Test Item 54",
-            "children": []
-          },
-          {
-            "id": 65,
-            "name": "Test Item 65",
-            "children": []
-          }
-        ]
+        "id": 12,
+        "name": "Test Item 12",
+        "children": []
+      },
+      {
+        "id": 13,
+        "name": "Test Item 13",
+        "children": []
+      },
+      {
+        "id": 14,
+        "name": "Test Item 14",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Test Folder XX",
+    "isGroup": true,
+    "children": [
+      {
+        "id": 21,
+        "name": "Test Item 21",
+        "children": []
+      },
+      {
+        "id": 22,
+        "name": "Test Item 22",
+        "children": []
+      },
+      {
+        "id": 23,
+        "name": "Test Item 23",
+        "children": []
       }
     ]
   },
@@ -33,13 +54,13 @@
     "isGroup": true,
     "children": [
       {
-        "id": 45,
-        "name": "Test Item 2",
+        "id": 41,
+        "name": "Test Item 41",
         "children": []
       },
       {
-        "id": 46,
-        "name": "Test Item 3",
+        "id": 42,
+        "name": "Test Item 42",
         "children": []
       }
     ]
@@ -47,7 +68,8 @@
   {
     "children": [],
     "id": 7,
-    "name": "Item with no children"
+    "name": "Item with no children",
+    "isGroup": true
   },
   {
     "children": [],

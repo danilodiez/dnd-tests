@@ -29,16 +29,19 @@ const getCols = (treeDepth: number) => [
   // "auto", // if we need RightAddons
 ];
 
-interface ItemProps {
+type FolderProps = {
   item: FlatNode;
   node: any;
   startingTree: any;
 }
+type FileItemProps = {
+  item: FlatNode;
+}
 
 export const FolderItem = React.memo(
-  ({ item, node, startingTree }: ItemProps) => {
+  ({ item, node, startingTree }: FolderProps) => {
 
-    const cols = React.useMemo(() => getCols(item.depth * 2), [item.depth]);
+    const cols = React.useMemo(() => getCols(2), [item.depth]);
     const [showFiles, setShowFiles] = useState(true);
     return (
       <Grid >
@@ -68,9 +71,9 @@ export const FolderItem = React.memo(
               model={childItem.plainItem}
               node={childItem}
               ownerTree={startingTree}
+              key={childItem.plainItem.id}
             >
               <FileItem
-                key={childItem.plainItem.id}
                 item={childItem.plainItem}
               />
             </DraggableElement>
@@ -80,7 +83,7 @@ export const FolderItem = React.memo(
   }
 );
 
-export const FileItem = React.memo(({ item }: ItemProps) => {
+export const FileItem = React.memo(({ item }: FileItemProps) => {
   const cols = React.useMemo(() => getCols(1), [item.depth]);
   return (
     <Grid cols={cols}>
