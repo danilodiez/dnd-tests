@@ -7,6 +7,7 @@ import { FolderItem, FileItem } from "./parts/items";
 import { useDndMonitor } from "@dnd-kit/core";
 import { DraggableElement } from "./parts/DraggableElement";
 import { DroppableContainer } from "./parts/DroppableContainer";
+import { Grid } from "@elliemae/ds-grid";
 import {
   arrayMove,
   SortableContext,
@@ -28,6 +29,7 @@ type FlatNodes = FlatNode[];
 const opts = {
   getUniqueId: (node: any) => `${node.id}`,
 };
+
 export const ExampleTree = React.memo(() => {
   const docFoldersTree = useTreeviewAsDSTree(TreeViewCompatibleData);
   // const docFoldersTree = useDSTree(DocFolders, opts);
@@ -50,10 +52,11 @@ export const ExampleTree = React.memo(() => {
 
   // Here we'll only have one DndMonitor
   useDndMonitor({
-    onDragMove(e){
-      console.log(e);
+    onDragMove(e) {
+      // console.log(e);
     },
     onDragEnd(e) {
+      console.log({ e });
       const startingTree = e.active.data.current.ownerTree;
       const grabbedNode = e.active.data.current.node;
       const destinationTree = e.over.data.current.ownerTree;
@@ -70,20 +73,22 @@ export const ExampleTree = React.memo(() => {
       startingTree.removeNode(grabbedNode.dsId);
     },
   });
+
+  const unassignedId = "unassigned";
+
   return (
     <div>
-      <DroppableContainer
-        id="unassigned"
-        data={{ ownerTree: unassignedTree }}
-        items={FlatTreeWithoutRootUnassigned}
-      >
-        <BoxWithTitle title="Unassigned Files">
+
+      <BoxWithTitle title="Unassigned Files">
+        <DroppableContainer
+          id={unassignedId}
+          data={{ ownerTree: unassignedTree }}
+        >
           {FlatTreeWithoutRootUnassigned.map((node) => {
             const item = { ...node.plainItem, depth: node.depth };
             return (
               <DraggableElement
                 key={item.id}
-                dragPrefix="unassigned"
                 model={item}
                 node={node}
                 ownerTree={unassignedTree}
@@ -92,8 +97,9 @@ export const ExampleTree = React.memo(() => {
               </DraggableElement>
             );
           })}
-        </BoxWithTitle>
-      </DroppableContainer>
+        </DroppableContainer>
+      </BoxWithTitle>
+
       {/* This is the same but for doc folders */}
       <BoxWithTitle title="Document Folders">
         {FlatTreeWithoutRootDocs.filter(
@@ -101,18 +107,11 @@ export const ExampleTree = React.memo(() => {
         ).map((node) => {
           const item = { ...node.plainItem, depth: node.depth };
           return (
-            <DroppableContainer
-              key={item.originalNodeData.id}
-              id={`folder-${item.id}`}
-              data={{ node, ownerTree: docFoldersTree }}
-              items={FlatTreeWithoutRootDocs}
-            >
-              <FolderItem
-                item={item}
-                node={node}
-                startingTree={docFoldersTree}
-              />
-            </DroppableContainer>
+            <FolderItem
+              item={item}
+              node={node}
+              startingTree={docFoldersTree}
+            />
           );
         })}
       </BoxWithTitle>

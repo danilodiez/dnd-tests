@@ -22,8 +22,10 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-
 import { Grid } from "@elliemae/ds-grid";
+import { useCustomCollisionDetector } from "./story/dnd/collisionDetector";
+import styled from "styled-components";
+
 const theme = getDefaultTheme();
 const FirstDnDTest = () => (
   <DndContext>
@@ -32,24 +34,23 @@ const FirstDnDTest = () => (
   </DndContext>
 );
 export default function App() {
-  const sensors = useSensors(
+  const styleContainerRef = React.useRef(null);
+  const customCollision = useCustomCollisionDetector({ styleContainerRef });
+    const sensors = useSensors(
     useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
   );
   return (
     <ThemeProvider theme={theme}>
       <h1>New Tree preview:</h1>
-      <Grid cols={["40%", "60%"]}>
+      <Grid cols={["40%", "60%"]} ref={styleContainerRef}>
         <DndContext
           modifiers={[restrictToWindowEdges]}
+          collisionDetection={customCollision}
           sensors={sensors}
-          collisionDetection={closestCenter}
         >
           <ExampleTree />
 
-        <BoxWithTitle title="Document Viewer"></BoxWithTitle>
+          <BoxWithTitle title="Document Viewer"></BoxWithTitle>
         </DndContext>
       </Grid>
     </ThemeProvider>

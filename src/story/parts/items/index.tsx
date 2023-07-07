@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Grid } from "@elliemae/ds-grid";
 import { DSTypography } from "@elliemae/ds-typography";
-import { File, Folder, ChevronDown, ChevronRight } from "@elliemae/ds-icons";
+import { File, Folder, FolderRoot } from "@elliemae/ds-icons";
+import { styled } from "@elliemae/ds-system";
 import { DSButtonV2 } from "@elliemae/ds-button";
-import { DraggableElement } from "../DraggableElement";
 import { useDroppable, useDndMonitor, useDraggable } from "@dnd-kit/core";
-
+import { DraggableElement } from "../DraggableElement";
+import { FolderClose, FolderOpen } from "./foldersSvgs";
+import { DroppableContainer } from "../DroppableContainer";
 type FlatNode = {
   id: string;
   originalNodeData: {
@@ -22,7 +24,7 @@ type FlatNodes = FlatNode[];
 //   and fill the rest with the content of the item
 //  (if in the future we need RightAddons, this is where we would add them, by adding "auto" at the end)
 const getCols = (treeDepth: number) => [
-  `${treeDepth * 8}px`,
+  // `${treeDepth * 8}px`,
   "auto",
   "auto",
   "1fr",
@@ -33,29 +35,25 @@ type FolderProps = {
   item: FlatNode;
   node: any;
   startingTree: any;
-}
+};
 type FileItemProps = {
   item: FlatNode;
-}
+};
 
 export const FolderItem = React.memo(
   ({ item, node, startingTree }: FolderProps) => {
-
-    const cols = React.useMemo(() => getCols(2), [item.depth]);
+    const cols = React.useMemo(() => getCols(item.depth), [item.depth]);
     const [showFiles, setShowFiles] = useState(true);
     return (
-      <Grid >
+      <Grid>
         <Grid cols={cols} alignItems="center">
-          <Grid>
-            <Folder />
-          </Grid>
           <Grid>
             <DSButtonV2
               buttonType="icon"
               aria-label="Button just need an aria label"
               onClick={() => setShowFiles((prev) => !prev)}
             >
-              {showFiles ? <ChevronDown size="s" /> : <ChevronRight size="s" />}
+              {showFiles ? <FolderRoot size="s" /> : <Folder size="s" />}
             </DSButtonV2>
           </Grid>
           <Grid>
@@ -64,20 +62,24 @@ export const FolderItem = React.memo(
             </DSTypography>
           </Grid>
         </Grid>
+
         {showFiles &&
           node.children.map((childItem) => (
-            <DraggableElement
-              dragPrefix="attachment"
-              model={childItem.plainItem}
-              node={childItem}
-              ownerTree={startingTree}
-              key={childItem.plainItem.id}
+            <DroppableContainer
+              id={`${childItem.plainItem.id}`}
+              data={{ node, ownerTree: startingTree }}
             >
-              <FileItem
-                item={childItem.plainItem}
-              />
-            </DraggableElement>
+              <DraggableElement
+                model={childItem.plainItem}
+                node={childItem}
+                ownerTree={startingTree}
+                key={childItem.plainItem.id}
+              >
+                <FileItem item={childItem.plainItem} />
+              </DraggableElement>
+            </DroppableContainer>
           ))}
+
       </Grid>
     );
   }
@@ -86,7 +88,7 @@ export const FolderItem = React.memo(
 export const FileItem = React.memo(({ item }: FileItemProps) => {
   const cols = React.useMemo(() => getCols(1), [item.depth]);
   return (
-    <Grid cols={cols}>
+    <Grid cols={cols} >
       <Grid />
       <Grid mr="xxs">
         <File />

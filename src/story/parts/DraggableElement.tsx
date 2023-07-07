@@ -1,11 +1,9 @@
-import { useDroppable, useDndMonitor, useDraggable } from "@dnd-kit/core";
+import { useDraggable } from "@dnd-kit/core";
 import { Grid } from "@elliemae/ds-grid";
 import { GripperVertical } from "@elliemae/ds-icons";
 import { DSButtonV2 } from "@elliemae/ds-button";
-import { useSortable } from "@dnd-kit/sortable";
 
 export const DraggableElement = ({
-  dragPrefix,
   model,
   children,
   node,
@@ -18,7 +16,7 @@ export const DraggableElement = ({
     transform,
     setActivatorNodeRef,
     isDragging,
-  } = useSortable({
+  } = useDraggable({
     id: `${model?.id}`,
     data: { node, ownerTree },
   });

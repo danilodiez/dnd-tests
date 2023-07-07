@@ -1,28 +1,31 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { Grid } from "@elliemae/ds-grid";
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  rectSwappingStrategy,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
+import { styled } from "@elliemae/ds-system";
 
-export const DroppableContainer = ({ id, data, items, children }) => {
+const StyledWithDropIndicator = styled(Grid)`
+  ${(props) => {
+    const dataId = props["data-id"];
+    return `
+   border-width: var(--hover-item-${dataId}-border-width);
+   border-style: var(--hover-item-${dataId}-border-style);
+   border-color: var(--hover-item-${dataId}-border-color);
+  `;
+  }}
+`;
+
+export const DroppableContainer = ({ id, data, children }) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: `droppable-${id}`,
+    id: `${id}`,
     data,
   });
-  const style = {
-    border: isOver ? "1px solid green" : "1px solid black",
-  };
+
 
   return (
-    <SortableContext items={items.map(node => node.dsId)} strategy={verticalListSortingStrategy}>
-    <Grid ref={setNodeRef} style={style}>
-      {children}
-    </Grid>
-    </SortableContext>
+    <StyledWithDropIndicator data-id={id}>
+      <Grid ref={setNodeRef}>
+        {children}
+      </Grid>
+    </StyledWithDropIndicator>
   );
 };
