@@ -15,6 +15,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  useDndMonitor,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -39,14 +40,17 @@ export default function App() {
     const sensors = useSensors(
     useSensor(PointerSensor),
   );
+  const resetBorderStyles = () => styleContainerRef.current.style.cssText = "";
+
   return (
     <ThemeProvider theme={theme}>
-      <h1>New Tree preview:</h1>
+      <h1>eFolder Split View</h1>
       <Grid cols={["40%", "60%"]} ref={styleContainerRef}>
         <DndContext
           modifiers={[restrictToWindowEdges]}
           collisionDetection={customCollision}
           sensors={sensors}
+          onDragEnd={resetBorderStyles}
         >
           <ExampleTree />
 

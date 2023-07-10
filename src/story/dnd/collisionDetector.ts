@@ -1,5 +1,5 @@
-import React from 'react';
-import { closestCenter } from '@dnd-kit/core';
+import React from "react";
+import { closestCenter } from "@dnd-kit/core";
 
 const collisionDetector = (args) => {
   const { collisionRect, droppableRects, droppableContainers } = args;
@@ -28,16 +28,16 @@ const collisionDetector = (args) => {
   // now that we have the droppable container and it's rect,
   // we need to understand if the collision is happening on the top 75% or bottom 25% of the droppable container
   // if it neither, then the collision is happening in the middle of it
-  let collisionPosition = 'middle';
+  let collisionPosition = "middle";
 
   const height25 = finalDroppableContainerRect.height / 4;
-  const top25Position = finalDroppableContainerRect.top + height25;
+  const top25Position = finalDroppableContainerRect.top;
   const bottom25Position = finalDroppableContainerRect.bottom - height25;
 
   if (collisionRect.top < top25Position) {
-    collisionPosition = 'top';
+    collisionPosition = "top";
   } else if (collisionRect.bottom > bottom25Position) {
-    collisionPosition = 'bottom';
+    collisionPosition = "bottom";
   }
   return {
     droppableContainer: finalDroppableContainer,
@@ -52,14 +52,14 @@ export const useCustomCollisionDetector = ({ styleContainerRef }) =>
     (args) => {
       const customCollision = collisionDetector(args);
       const { droppableContainer, collisionPosition } = customCollision;
-
-      styleContainerRef.current.style.cssText = ``;
+      
+      styleContainerRef.current.style.cssText = "";
       if (droppableContainer) {
         const { id } = droppableContainer;
-        let borderVal = '2px 2px 2px 2px';
-        if (collisionPosition === 'top') {
+        let borderVal = "2px 2px 2px 2px";
+        if (collisionPosition === "top") {
           borderVal = `2px 0px 0px 0px`;
-        } else if (collisionPosition === 'bottom') {
+        } else if (collisionPosition === "bottom") {
           borderVal = `0px 0px 2px 0px`;
         }
         const borderWidth = `--hover-item-${id}-border-width: ${borderVal};`;
@@ -73,4 +73,3 @@ export const useCustomCollisionDetector = ({ styleContainerRef }) =>
     },
     [styleContainerRef]
   );
-

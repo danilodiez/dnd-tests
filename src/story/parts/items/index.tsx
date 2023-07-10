@@ -65,21 +65,15 @@ export const FolderItem = React.memo(
 
         {showFiles &&
           node.children.map((childItem) => (
-            <DroppableContainer
-              id={`${childItem.plainItem.id}`}
-              data={{ node, ownerTree: startingTree }}
+            <DraggableElement
+              model={childItem.plainItem}
+              node={childItem}
+              ownerTree={startingTree}
+              key={childItem.plainItem.id}
             >
-              <DraggableElement
-                model={childItem.plainItem}
-                node={childItem}
-                ownerTree={startingTree}
-                key={childItem.plainItem.id}
-              >
-                <FileItem item={childItem.plainItem} />
-              </DraggableElement>
-            </DroppableContainer>
+              <FileItem item={childItem.plainItem} />
+            </DraggableElement>
           ))}
-
       </Grid>
     );
   }
@@ -88,7 +82,7 @@ export const FolderItem = React.memo(
 export const FileItem = React.memo(({ item }: FileItemProps) => {
   const cols = React.useMemo(() => getCols(1), [item.depth]);
   return (
-    <Grid cols={cols} >
+    <Grid cols={cols}>
       <Grid />
       <Grid mr="xxs">
         <File />

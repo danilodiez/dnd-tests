@@ -7,12 +7,6 @@ import { FolderItem, FileItem } from "./parts/items";
 import { useDndMonitor, DragOverlay } from "@dnd-kit/core";
 import { DraggableElement } from "./parts/DraggableElement";
 import { DroppableContainer } from "./parts/DroppableContainer";
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
 
 type FlatNode = {
   id: string;
@@ -69,13 +63,14 @@ export const ExampleTree = React.memo(() => {
       // we use the whole tree meaning unassigned
 
       if (nodesSelection.length) {
-        nodesSelection.forEach(node => {
+        nodesSelection.forEach((node) => {
           destinationTree.addNode(node.plainItem, { parent: parentNode });
           startingTree.removeNode(node.dsId);
-        })
+        });
+        setNodesSelection([]);
       } else {
-          destinationTree.addNode(grabbedNode.plainItem, { parent: parentNode });
-          startingTree.removeNode(grabbedNode.dsId);
+        destinationTree.addNode(grabbedNode.plainItem, { parent: parentNode });
+        startingTree.removeNode(grabbedNode.dsId);
       }
     },
   });
@@ -112,7 +107,17 @@ export const ExampleTree = React.memo(() => {
         ).map((node) => {
           const item = { ...node.plainItem, depth: node.depth };
           return (
-            <FolderItem item={item} node={node} startingTree={docFoldersTree} />
+            <DroppableContainer
+              id={`${node.plainItem.id}`}
+              data={{ node, ownerTree: docFoldersTree}}
+              key={node.plainItem.id}
+            >
+              <FolderItem
+                item={item}
+                node={node}
+                startingTree={docFoldersTree}
+              />
+            </DroppableContainer>
           );
         })}
       </BoxWithTitle>
