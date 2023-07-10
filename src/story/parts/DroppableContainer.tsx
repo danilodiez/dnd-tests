@@ -15,11 +15,10 @@ const StyledWithDropIndicator = styled(Grid)`
 `;
 
 export const DroppableContainer = ({ id, data, children }) => {
-  const { isOver, setNodeRef } = useDroppable({
+  const { setNodeRef } = useDroppable({
     id: `${id}`,
     data,
   });
-
 
   return (
     <StyledWithDropIndicator data-id={id}>

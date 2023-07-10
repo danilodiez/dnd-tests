@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTreeviewAsDSTree } from "@elliemae/ds-tree-model";
 import TreeViewCompatibleData from "./mock/mock-data.json";
 import TreeViewCompatibleUnasssigned from "./mock/mock-tree-unassigned.json";
 import { BoxWithTitle } from "./parts/BoxWithTitle";
 import { FolderItem, FileItem } from "./parts/items";
-import { useDndMonitor } from "@dnd-kit/core";
+import { useDndMonitor, DragOverlay } from "@dnd-kit/core";
 import { DraggableElement } from "./parts/DraggableElement";
 import { DroppableContainer } from "./parts/DroppableContainer";
-import { Grid } from "@elliemae/ds-grid";
 import {
   arrayMove,
   SortableContext,
@@ -31,6 +30,7 @@ const opts = {
 };
 
 export const ExampleTree = React.memo(() => {
+  const [nodesSelection, setNodesSelection] = useState([]);
   const docFoldersTree = useTreeviewAsDSTree(TreeViewCompatibleData);
   // const docFoldersTree = useDSTree(DocFolders, opts);
 
@@ -56,7 +56,6 @@ export const ExampleTree = React.memo(() => {
       // console.log(e);
     },
     onDragEnd(e) {
-      console.log({ e });
       const startingTree = e.active.data.current.ownerTree;
       const grabbedNode = e.active.data.current.node;
       const destinationTree = e.over.data.current.ownerTree;
@@ -69,19 +68,23 @@ export const ExampleTree = React.memo(() => {
       // If the drop area is a folder, we must send the node, if not
       // we use the whole tree meaning unassigned
 
-      destinationTree.addNode(grabbedNode.plainItem, { parent: parentNode });
-      startingTree.removeNode(grabbedNode.dsId);
+      if (nodesSelection.length) {
+        nodesSelection.forEach(node => {
+          destinationTree.addNode(node.plainItem, { parent: parentNode });
+          startingTree.removeNode(node.dsId);
+        })
+      } else {
+          destinationTree.addNode(grabbedNode.plainItem, { parent: parentNode });
+          startingTree.removeNode(grabbedNode.dsId);
+      }
     },
   });
 
-  const unassignedId = "unassigned";
-
   return (
     <div>
-
       <BoxWithTitle title="Unassigned Files">
         <DroppableContainer
-          id={unassignedId}
+          id="unassigned"
           data={{ ownerTree: unassignedTree }}
         >
           {FlatTreeWithoutRootUnassigned.map((node) => {
@@ -92,6 +95,8 @@ export const ExampleTree = React.memo(() => {
                 model={item}
                 node={node}
                 ownerTree={unassignedTree}
+                selected={nodesSelection}
+                setSelection={setNodesSelection}
               >
                 <FileItem item={item} />
               </DraggableElement>
@@ -107,11 +112,7 @@ export const ExampleTree = React.memo(() => {
         ).map((node) => {
           const item = { ...node.plainItem, depth: node.depth };
           return (
-            <FolderItem
-              item={item}
-              node={node}
-              startingTree={docFoldersTree}
-            />
+            <FolderItem item={item} node={node} startingTree={docFoldersTree} />
           );
         })}
       </BoxWithTitle>
