@@ -3,15 +3,15 @@ import { useDraggable, DragOverlay } from "@dnd-kit/core";
 import { Grid } from "@elliemae/ds-grid";
 import { GripperVertical } from "@elliemae/ds-icons";
 import { DSButtonV2 } from "@elliemae/ds-button";
-import { FileItem } from "./items";
+import { useItemsStore } from "../store";
+import { SingleOverlay, StackOfCards } from "./items/overlays";
 
 export const DraggableElement = ({
   model,
   children,
   node,
   ownerTree,
-  setSelection,
-  selected,
+  section,
 }) => {
   const {
     attributes,
@@ -24,12 +24,30 @@ export const DraggableElement = ({
     id: `${model?.id}`,
     data: { node, ownerTree },
   });
-  const stackedBoxesStyle = selected?.length
+
+  // store
+  const selectedItems = useItemsStore((state) => state.selected);
+  const setItems = useItemsStore((state) => state.setItems);
+
+  // If we have files from 2 sections we won't allow the user to drag and drop
+  const canDrag = React.useMemo(() => {
+    if (selectedItems.sections.length) {
+      const setOfSections = new Set(selectedItems.sections);
+      const isCurrentDraggableSelected =
+        selectedItems.sections.includes(section);
+      const isSelectedFromMultipleSections = setOfSections.size < 2;
+
+      return isSelectedFromMultipleSections && isCurrentDraggableSelected;
+    }
+    return true;
+  }, [selectedItems, isDragging]);
+
+  const stackedBoxesStyle = selectedItems.items?.length
     ? "1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999, 4px 4px 0px #999, 5px 5px 0px #999, 6px 6px 0px #999"
     : "rgba(0, 0, 0, 0.5) 0px 2px 4px 0px";
 
   const style =
-    transform && isDragging
+    transform && isDragging && canDrag
       ? {
           boxShadow: stackedBoxesStyle,
           cursor: "grab",
@@ -37,53 +55,54 @@ export const DraggableElement = ({
       : { border: "" };
 
   const handleSelection = () => {
-    let prevSelected = selected;
-    if (selected.includes(node)) {
+    let prevSelected = selectedItems.items;
+    let sections = selectedItems.sections;
+    if (selectedItems.items.includes(node)) {
       prevSelected = prevSelected.filter(
         (prevNode) => prevNode.dsId != node.dsId
       );
+      const index = sections.indexOf(section);
+      if (index !== -1) {
+        sections.splice(index, 1);
+      }
     } else {
       prevSelected.push(node);
+      sections.push(section);
     }
-    setSelection(prevSelected);
+    setItems(prevSelected, sections);
   };
 
   return (
     <>
-      {isDragging && (
+      {isDragging && canDrag && (
         <DragOverlay>
-          <Grid
-            cols={["36px", "1fr"]}
-            width="80%"
-            border="1px solid neutral-100"
-            alignItems="center"
-            p="xxs"
-            bg="white"
-            data-depth={model?.depth}
-            style={style}
-          >
-            <DSButtonV2 buttonType="icon" aria-label="Drag and Drop Handler">
-              <GripperVertical />
-            </DSButtonV2>
-            {children}
-          </Grid>
+          {selectedItems.items.length > 1 ? (
+            <StackOfCards items={selectedItems.items}>{children}</StackOfCards>
+          ) : (
+            <SingleOverlay style={style}>{children}</SingleOverlay>
+          )}
         </DragOverlay>
       )}
       <Grid
-        cols={["24px", "36px", "1fr"]}
-        border="1px solid neutral-100"
+        cols={["36px", "1fr"]}
+        // border="1px solid neutral-100"
+        borderLeft={
+          selectedItems.items?.includes(node)
+            ? "4px brand-600 solid"
+            : "4px solid rgba(30, 121, 194, 0.4)"
+        }
         alignItems="center"
-        p="xxs"
+        my="2px"
         data-depth={model?.depth}
         ref={setNodeRef}
         {...attributes}
+        onClick={handleSelection}
         style={
-          (selected?.includes(node) || isDragging)
-            ? { backgroundColor: "#eee" }
-            : { backgroundColor: "#fff" }
+          isDragging
+            ? { backgroundColor: "#eee", position: "relative" }
+            : { backgroundColor: "#fff", position: "relative" }
         }
       >
-        <input type="checkbox" onClick={handleSelection}></input>
         <DSButtonV2
           buttonType="icon"
           aria-label="Drag and Drop Handler"

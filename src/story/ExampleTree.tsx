@@ -7,6 +7,7 @@ import { FolderItem, FileItem } from "./parts/items";
 import { useDndMonitor, DragOverlay } from "@dnd-kit/core";
 import { DraggableElement } from "./parts/DraggableElement";
 import { DroppableContainer } from "./parts/DroppableContainer";
+import { useItemsStore } from "./store";
 
 type FlatNode = {
   id: string;
@@ -24,7 +25,11 @@ const opts = {
 };
 
 export const ExampleTree = React.memo(() => {
-  const [nodesSelection, setNodesSelection] = useState([]);
+
+  const selectedItems = useItemsStore((state) => state.selected);
+  const resetStore = useItemsStore(state => state.resetStore);
+  const setItems = useItemsStore(state => state.setItems);
+
   const docFoldersTree = useTreeviewAsDSTree(TreeViewCompatibleData);
   // const docFoldersTree = useDSTree(DocFolders, opts);
 
@@ -62,12 +67,12 @@ export const ExampleTree = React.memo(() => {
       // If the drop area is a folder, we must send the node, if not
       // we use the whole tree meaning unassigned
 
-      if (nodesSelection.length) {
-        nodesSelection.forEach((node) => {
+      if (selectedItems.items.length) {
+        selectedItems.items.forEach((node) => {
           destinationTree.addNode(node.plainItem, { parent: parentNode });
           startingTree.removeNode(node.dsId);
         });
-        setNodesSelection([]);
+        resetStore()
       } else {
         destinationTree.addNode(grabbedNode.plainItem, { parent: parentNode });
         startingTree.removeNode(grabbedNode.dsId);
@@ -77,7 +82,7 @@ export const ExampleTree = React.memo(() => {
 
   return (
     <div>
-      <BoxWithTitle title="Unassigned Files">
+      <BoxWithTitle title="Unassigned Files" items={FlatTreeWithoutRootUnassigned}>
         <DroppableContainer
           id="unassigned"
           data={{ ownerTree: unassignedTree }}
@@ -90,8 +95,7 @@ export const ExampleTree = React.memo(() => {
                 model={item}
                 node={node}
                 ownerTree={unassignedTree}
-                selected={nodesSelection}
-                setSelection={setNodesSelection}
+                section="unassigned"
               >
                 <FileItem item={item} />
               </DraggableElement>
@@ -101,7 +105,7 @@ export const ExampleTree = React.memo(() => {
       </BoxWithTitle>
 
       {/* This is the same but for doc folders */}
-      <BoxWithTitle title="Document Folders">
+      <BoxWithTitle title="Document Folders" items={FlatTreeWithoutRootDocs}>
         {FlatTreeWithoutRootDocs.filter(
           (node) => node.plainItem.originalNodeData.isGroup
         ).map((node) => {
@@ -109,7 +113,7 @@ export const ExampleTree = React.memo(() => {
           return (
             <DroppableContainer
               id={`${node.plainItem.id}`}
-              data={{ node, ownerTree: docFoldersTree}}
+              data={{ node, ownerTree: docFoldersTree }}
               key={node.plainItem.id}
             >
               <FolderItem

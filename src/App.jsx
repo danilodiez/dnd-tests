@@ -25,7 +25,7 @@ import {
 } from "@dnd-kit/sortable";
 import { Grid } from "@elliemae/ds-grid";
 import { useCustomCollisionDetector } from "./story/dnd/collisionDetector";
-import styled from "styled-components";
+import { useItemsStore } from "./story/store";
 
 const theme = getDefaultTheme();
 const FirstDnDTest = () => (
@@ -40,7 +40,12 @@ export default function App() {
     const sensors = useSensors(
     useSensor(PointerSensor),
   );
-  const resetBorderStyles = () => styleContainerRef.current.style.cssText = "";
+  const resetStore = useItemsStore((state) => state.resetStore);
+
+  const resetDnD = () => {
+    resetStore();
+    styleContainerRef.current.style.cssText = ""
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -50,7 +55,7 @@ export default function App() {
           modifiers={[restrictToWindowEdges]}
           collisionDetection={customCollision}
           sensors={sensors}
-          onDragEnd={resetBorderStyles}
+          onDragEnd={resetDnD}
         >
           <ExampleTree />
 

@@ -15,8 +15,10 @@
         "@dnd-kit/sortable": "^7.0.2",
         "@elliemae/ds-breadcrumb": "3.20.2",
         "@elliemae/ds-button": "3.20.2",
+        "@elliemae/ds-controlled-form": "^3.20.3",
         "@elliemae/ds-grid": "3.20.2",
         "@elliemae/ds-icons": "3.20.2",
+        "@elliemae/ds-notification-badge": "^3.20.3",
         "@elliemae/ds-system": "3.20.2",
         "@elliemae/ds-tree-model": "3.20.2",
         "@elliemae/ds-typography": "3.20.2",
@@ -37,7 +39,8 @@
         "styled-components": "~5.3.9",
         "styled-system": "^5.1.5",
         "uid": "2.0.1",
-        "uuid": "^9.0.0"
+        "uuid": "^9.0.0",
+        "zustand": "^4.3.9"
     },
     "devDependencies": {
         "@types/react": "^18.0.21",

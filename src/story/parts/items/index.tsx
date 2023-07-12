@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { Grid } from "@elliemae/ds-grid";
 import { DSTypography } from "@elliemae/ds-typography";
-import { File, Folder, FolderRoot } from "@elliemae/ds-icons";
-import { styled } from "@elliemae/ds-system";
+import { File, Folder, FolderRoot, MoreOptionsVert } from "@elliemae/ds-icons";
 import { DSButtonV2 } from "@elliemae/ds-button";
-import { useDroppable, useDndMonitor, useDraggable } from "@dnd-kit/core";
 import { DraggableElement } from "../DraggableElement";
 import { FolderClose, FolderOpen } from "./foldersSvgs";
-import { DroppableContainer } from "../DroppableContainer";
 type FlatNode = {
   id: string;
   originalNodeData: {
@@ -28,7 +25,7 @@ const getCols = (treeDepth: number) => [
   "auto",
   "auto",
   "1fr",
-  // "auto", // if we need RightAddons
+  "auto", // if we need RightAddons
 ];
 
 type FolderProps = {
@@ -70,6 +67,7 @@ export const FolderItem = React.memo(
               node={childItem}
               ownerTree={startingTree}
               key={childItem.plainItem.id}
+              section="attachment"
             >
               <FileItem item={childItem.plainItem} />
             </DraggableElement>
@@ -90,9 +88,14 @@ export const FileItem = React.memo(({ item }: FileItemProps) => {
       <Grid>
         <DSTypography variant="b1"> {item.originalNodeData.name}</DSTypography>
       </Grid>
-      {/* <Grid> if you need RightAddons
-        <RightAddons>
-      </Grid> */}
+      <Grid> 
+        <DSButtonV2
+          buttonType="icon"
+          aria-label="Toolbar"
+        >
+        <MoreOptionsVert />
+        </DSButtonV2>
+      </Grid>
     </Grid>
   );
 });
