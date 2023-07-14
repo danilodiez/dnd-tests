@@ -30,15 +30,16 @@ const collisionDetector = (args) => {
   // if it neither, then the collision is happening in the middle of it
   let collisionPosition = "middle";
 
-  const height25 = finalDroppableContainerRect.height / 4;
-  const top25Position = finalDroppableContainerRect.top;
+  const height25 = finalDroppableContainerRect.height / 25;
+  const top25Position = finalDroppableContainerRect.top + height25;
   const bottom25Position = finalDroppableContainerRect.bottom - height25;
 
-  if (collisionRect.top < top25Position) {
-    collisionPosition = "top";
-  } else if (collisionRect.bottom > bottom25Position) {
-    collisionPosition = "bottom";
-  }
+  // We do this if we need to detect for top and bottom sections
+  // if (collisionRect.top < top25Position) {
+  //   collisionPosition = "top";
+  // } else if (collisionRect.bottom > bottom25Position) {
+  //   collisionPosition = "bottom";
+  // }
   return {
     droppableContainer: finalDroppableContainer,
     droppableContainerRect: finalDroppableContainerRect,

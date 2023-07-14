@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useState } from "react";
+import React, { ReactNode, useCallback, useState, useEffect } from "react";
 import { Grid } from "@elliemae/ds-grid";
 import { DSTypography } from "@elliemae/ds-typography";
 import { styled } from "@elliemae/ds-system";
@@ -12,32 +12,40 @@ type BoxWithTitleProps = {
   title: string;
   children: ReactNode;
   items: any[];
+  section: string,
 };
 const rows = ["auto", "1fr"];
 export const BoxWithTitle = React.memo(
-  ({ title, items, children }: BoxWithTitleProps) => {
+  ({ title, items, children, section }: BoxWithTitleProps) => {
     const [mixedState, setMixedState] = useState(false);
+    const [itemsSelectedPerSection, setItemsSelectedPerSection] = useState([])
 
     const idsStrings = React.useMemo(
       () => items?.map((node) => node.dsId).join(" ") || "",
       [items]
     );
     // store
-    const selectedItems = useItemsStore((state) => state.selected.items);
+    const selectedItems = useItemsStore((state) => state.selected);
     const setItems = useItemsStore((state) => state.setItems);
 
+    useEffect(() => {
+      const itemsPerSection = selectedItems?.filter(item => item.section === section);
+      setItemsSelectedPerSection(itemsPerSection);
+    }, [selectedItems])
+    
     // TODO: this is not working yet
     const handleSelection = useCallback(() => {
-      if (selectedItems.length) {
-        setItems([], "");
-        setMixedState(false);
-      } else {
-        setItems(items, "");
-        setMixedState(true);
-      }
+      return
+      // if (selectedItems.length) {
+      //   setItems([], "");
+      //   setMixedState(false);
+      // } else {
+      //   setItems(items, "");
+      //   setMixedState(true);
+      // }
     }, [selectedItems]);
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (
         selectedItems?.length > 0 &&
         selectedItems?.length !== items?.length
@@ -53,7 +61,7 @@ export const BoxWithTitle = React.memo(
         border="1px solid neutral-600"
         p="xxs"
         m="xxs"
-        gutter="xs"
+        gutter="xxxs"
       >
         <Grid cols={["65%", "auto"]}>
           <Grid cols={["20px", "auto"]}>
@@ -66,13 +74,12 @@ export const BoxWithTitle = React.memo(
               device="desktop"
             />
             <DSTypography variant="h4">
-              {title} | {selectedItems?.length}
+              {title} | {itemsSelectedPerSection?.length}
             </DSTypography>
           </Grid>
           <Grid
             cols={["auto", "auto", "auto"]}
             justifyContent="flex-end"
-            mr="xxs"
           >
             <DSButtonV2 buttonType="icon" aria-label="Upload">
               <UploadFile />

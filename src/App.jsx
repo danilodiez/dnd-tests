@@ -1,8 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import { getDefaultTheme } from "@elliemae/pui-theme";
-import { UnassignedContainer } from "./story/UnassignedContainer";
-import { DocFoldersContainer } from "./story/DocFoldersContainer";
 import "./index.css";
 import "sanitize.css";
 import { ExampleTree } from "./story/ExampleTree";
@@ -17,35 +15,25 @@ import {
   useSensors,
   useDndMonitor,
 } from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
 import { Grid } from "@elliemae/ds-grid";
 import { useCustomCollisionDetector } from "./story/dnd/collisionDetector";
 import { useItemsStore } from "./story/store";
 
 const theme = getDefaultTheme();
-const FirstDnDTest = () => (
-  <DndContext>
-    <UnassignedContainer />
-    <DocFoldersContainer />
-  </DndContext>
-);
+
 export default function App() {
   const styleContainerRef = React.useRef(null);
   const customCollision = useCustomCollisionDetector({ styleContainerRef });
-    const sensors = useSensors(
-    useSensor(PointerSensor),
-  );
+  const pointerSensor = useSensor(PointerSensor);
+  const keyboardSensor = useSensor(KeyboardSensor);
+
+  const sensors = useSensors(pointerSensor, keyboardSensor);
   const resetStore = useItemsStore((state) => state.resetStore);
 
   const resetDnD = () => {
     resetStore();
-    styleContainerRef.current.style.cssText = ""
-  }
+    styleContainerRef.current.style.cssText = "";
+  };
 
   return (
     <ThemeProvider theme={theme}>
