@@ -8,6 +8,7 @@ import { useDndMonitor, DragOverlay } from "@dnd-kit/core";
 import { DraggableElement } from "./parts/DraggableElement";
 import { DroppableContainer } from "./parts/DroppableContainer";
 import { useItemsStore } from "./store";
+import { v4 as uuidv4 } from 'uuid';
 
 type FlatNode = {
   id: string;
@@ -48,28 +49,33 @@ export const ExampleTree = React.memo(() => {
     return fullTree;
   }, [unassignedTree.hash]);
 
-  // Here we'll only have one DndMonitor
   useDndMonitor({
     onDragEnd(e) {
       const startingTree = e.active.data.current.ownerTree;
       const grabbedNode = e.active.data.current.node;
       const destinationTree = e.over.data.current.ownerTree;
       const folderParent = e.over.data.current.node;
+
+      // If the drop area is a folder, we must send the node, if not
+      // we use the whole tree meaning unassigned
       const parentNode = folderParent
         ? e.over.data.current.node
         : destinationTree.getRoot();
 
       if (grabbedNode.parent === parentNode) return;
-      // If the drop area is a folder, we must send the node, if not
-      // we use the whole tree meaning unassigned
 
+      // We have to create new nodes because if we don't we are gonna have collision of IDs
       if (selectedItems.length) {
         selectedItems.forEach((item) => {
-          destinationTree.addNode(item.node.plainItem, { parent: parentNode });
+        const newId = uuidv4();
+        const newNode = {id: newId, originalNodeData: {id: newId, name: item.node.plainItem.originalNodeData.name}}
+          destinationTree.addNode(newNode, { parent: parentNode });
           startingTree.removeNode(item.node.dsId);
         });
       } else {
-        destinationTree.addNode(grabbedNode.plainItem, { parent: parentNode });
+        const newId = uuidv4();
+        const newNode = {id: newId, originalNodeData: {id: newId, name: grabbedNode.plainItem.originalNodeData.name}}
+        destinationTree.addNode(newNode, { parent: parentNode });
         startingTree.removeNode(grabbedNode.dsId);
       }
     },
@@ -77,7 +83,7 @@ export const ExampleTree = React.memo(() => {
 
   return (
     <div>
-      <BoxWithTitle title="Unassigned Files" items={FlatTreeWithoutRootUnassigned} section="unassigned">
+      <BoxWithTitle title="Unassigned Files" section="unassigned">
         <DroppableContainer
           id="unassigned"
           data={{ ownerTree: unassignedTree }}
@@ -100,7 +106,7 @@ export const ExampleTree = React.memo(() => {
       </BoxWithTitle>
 
       {/* This is the same but for doc folders */}
-      <BoxWithTitle title="Document Folders" items={FlatTreeWithoutRootDocs} section="attachment">
+      <BoxWithTitle title="Document Folders" section="attachment">
         {FlatTreeWithoutRootDocs.filter(
           (node) => node.plainItem.originalNodeData.isGroup
         ).map((node) => {
@@ -112,6 +118,7 @@ export const ExampleTree = React.memo(() => {
               key={node.plainItem.id}
             >
               <FolderItem
+                items={FlatTreeWithoutRootDocs}
                 item={item}
                 node={node}
                 startingTree={docFoldersTree}

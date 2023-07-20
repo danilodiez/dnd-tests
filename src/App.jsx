@@ -38,7 +38,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <h1>eFolder Split View</h1>
-      <Grid cols={["40%", "60%"]} ref={styleContainerRef}>
+      <Grid cols={["25%", "75%"]} ref={styleContainerRef}>
         <DndContext
           modifiers={[restrictToWindowEdges]}
           collisionDetection={customCollision}

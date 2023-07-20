@@ -13,29 +13,26 @@ const StyledStackBorderHelper = styled(Grid)`
   height: 100%;
   position: absolute;
   z-index: ${({ $offset }) => $offset};
-  top: ${({ $offset }) => $offset}px;
-  left: ${({ $offset }) => $offset}px;
+  bottom: ${({ $offset }) => $offset}px;
+  right: ${({ $offset }) => $offset}px;
 `;
 
 export const StackOfCards = ({ items, children }) => {
   return (
     <StyledStackBorderWrapper
-      borderRadius="xxs"
-      border="1px solid black"
-      width="80%"
+      border="2px solid brand-600"
+      width="50%"
       bg="white"
     >
       <StyledStackBorderHelper
-        borderRadius="xxs"
-        border="1px solid brand-700"
-        bg="brand-300"
-        $offset="-5"
+        border="1px solid neutral-100"
+        bg="neutral-400"
+        $offset="-7"
       />
       <StyledStackBorderHelper
-        borderRadius="xxs"
-        border="1px solid brand-700"
-        bg="brand-400"
-        $offset="-3"
+        border="1px solid neutral-100"
+        bg="neutral-400"
+        $offset="-5"
       />
       <Grid
         cols={["36px", "1fr"]}
@@ -44,7 +41,7 @@ export const StackOfCards = ({ items, children }) => {
         bg="white"
       >
         <DSButtonV2 buttonType="icon" aria-label="Drag and Drop Handler">
-            <NotificationBadge size="s" type="number" value={items?.length} />
+            <NotificationBadge color="#016BA9" size="s" type="number" value={items?.length} />
         </DSButtonV2>
         {children}
       </Grid>
@@ -56,8 +53,8 @@ export const SingleOverlay = ({style, children}) => {
   return (
     <Grid
       cols={["36px", "1fr"]}
-      width="80%"
-      border="1px solid neutral-100"
+      width="50%"
+      border="2px solid brand-600"
       alignItems="center"
       bg="white"
       style={style}

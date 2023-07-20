@@ -77,7 +77,7 @@ export const DraggableElement = ({
   }, [selectedItems]);
   return (
     <>
-      {isItemDragging && canDrag ? (
+      {(isItemDragging && canDrag) ? (
         <DragOverlay>
           {selectedItems.length > 1 ? (
             <StackOfCards items={selectedItems}>{children}</StackOfCards>
@@ -95,17 +95,13 @@ export const DraggableElement = ({
         }
         alignItems="center"
         my="2px"
-        ml="8px"
+        ml="40px"
         data-depth={model?.depth}
         ref={setNodeRef}
         {...attributes}
         style={
           isItemDragging || (isGlobalDragging && selectedNodes.includes(node))
-            ? {
-                backgroundColor: "#eee",
-                position: "relative",
-                color: "#A8B1BE",
-              }
+            ? { backgroundColor: "#eee", position: "relative" }
             : { backgroundColor: "#fff", position: "relative" }
         }
       >
