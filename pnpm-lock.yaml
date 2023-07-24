@@ -26,6 +26,9 @@ dependencies:
   '@elliemae/ds-controlled-form':
     specifier: ^3.20.3
     version: 3.20.3(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@popperjs/core@2.11.6)(@types/react@18.0.21)(@xstyled/styled-components@3.6.0)(@xstyled/system@3.7.5)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9)(styled-system@5.1.5)
+  '@elliemae/ds-dialog':
+    specifier: ^3.20.4
+    version: 3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9)
   '@elliemae/ds-dropdownmenu':
     specifier: ^3.20.3
     version: 3.20.3(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@popperjs/core@2.11.6)(@types/react@18.0.21)(@xstyled/styled-components@3.6.0)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9)(styled-system@5.1.5)
@@ -47,6 +50,9 @@ dependencies:
   '@elliemae/ds-typography':
     specifier: 3.20.2
     version: 3.20.2(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+  '@elliemae/ds-utilities':
+    specifier: ^3.20.4
+    version: 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
   '@elliemae/pui-theme':
     specifier: 2.7.0
     version: 2.7.0(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
@@ -467,6 +473,26 @@ packages:
       - lodash
     dev: false
 
+  /@elliemae/ds-backdrop@3.20.4(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-J6+F0qMRtN7K+bQaWEWzs8JpLJvBbNAlcXIFGHOuv4vzcurnjbJ0Ye3a6DJaAp1cmwjNvCTDiiP0FEIA7gQjgg==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      styled-components: ~5.3.9
+    dependencies:
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-system': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+    transitivePeerDependencies:
+      - '@elliemae/pui-theme'
+      - '@types/react'
+      - lodash
+    dev: false
+
   /@elliemae/ds-breadcrumb@3.20.2(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
     resolution: {integrity: sha512-ybzsffHialG0yrAqufCQ5PXSqCSzr6b53vD/+wQtZsoASGQ27MWR7IQoI2UauctpWF8CtepdFPaxdzs9MQ9CRw==}
     engines: {node: '>=16', pnpm: '>=6'}
@@ -534,6 +560,29 @@ packages:
       - styled-components
     dev: false
 
+  /@elliemae/ds-button-v1@3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9):
+    resolution: {integrity: sha512-XegdIQlEGwJnkztNWhGZu6a2xC+/gQ5ltmdTQig2DHbZdDor/hX82DKo77YUKop0Du9gOUvqWb7VRu7CIbPWKg==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@elliemae/ds-classnames': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-shared': 3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9)
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@elliemae/pui-theme'
+      - '@types/react'
+      - lodash
+      - react-is
+      - redux
+      - styled-components
+    dev: false
+
   /@elliemae/ds-button-v2@3.20.2(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
     resolution: {integrity: sha512-HtBYR2QazsB8oJNTGzbgQNmF7bbflYxIubkJxmdamdCKJ2PjOmfm1tC7sC8nMCQ7Un6nUgN7deXih5QSaZqScA==}
     engines: {node: '>=16', pnpm: '>=6'}
@@ -565,6 +614,26 @@ packages:
       '@elliemae/ds-props-helpers': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-system': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-utilities': 3.20.3(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+    transitivePeerDependencies:
+      - '@elliemae/pui-theme'
+      - '@types/react'
+      - lodash
+    dev: false
+
+  /@elliemae/ds-button-v2@3.20.4(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-EREnaL64mqX85cqpw0g3b31rGDzHDhZql/IikpL6yFrqQesBl1+XHdMEKXj+6IWKoOXFt42r8AFnVInybqGaAQ==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      styled-components: ~5.3.9
+    dependencies:
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-system': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
@@ -606,6 +675,28 @@ packages:
     dependencies:
       '@elliemae/ds-button-v1': 3.20.3(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9)
       '@elliemae/ds-button-v2': 3.20.3(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@elliemae/pui-theme'
+      - '@types/react'
+      - lodash
+      - react-is
+      - redux
+    dev: false
+
+  /@elliemae/ds-button@3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9):
+    resolution: {integrity: sha512-vbxjSpJoOlqnQnzFyRzACo3caMKMdUQ+F+stD7kz32JPz3MNB9yloMHyXzBK4RY4wRsXZXMXT06TC0/aIluzsg==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      styled-components: ~5.3.9
+    dependencies:
+      '@elliemae/ds-button-v1': 3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9)
+      '@elliemae/ds-button-v2': 3.20.4(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
@@ -671,11 +762,26 @@ packages:
       lodash: ^4.17.21
       react: ~17.0.2
       react-dom: ^17.0.2
-    peerDependenciesMeta:
-      react:
-        optional: true
     dependencies:
       '@elliemae/ds-utilities': 3.20.3(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      lodash: 4.17.21
+      obj-str: 1.1.0
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+    transitivePeerDependencies:
+      - '@types/react'
+      - styled-components
+    dev: false
+
+  /@elliemae/ds-classnames@3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-rPDuJc6QD3G+LBDiXAdkoAbfcGXeQfTIHulX+J4ypSPy99uNK7ZjvRHG3bERffs/CmF/ngUfraIo48AvLPkLHg==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      lodash: ^4.17.21
+      react: ~17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       lodash: 4.17.21
       obj-str: 1.1.0
       react: 17.0.2
@@ -693,9 +799,6 @@ packages:
       react: ^17.0.2
       react-dom: ^17.0.2
       styled-components: ~5.3.9
-    peerDependenciesMeta:
-      react:
-        optional: true
     dependencies:
       '@elliemae/ds-button': 3.20.3(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9)
       '@elliemae/ds-circular-progress-indicator': 3.20.3(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-system@5.1.5)
@@ -767,6 +870,32 @@ packages:
       - '@xstyled/styled-components'
       - '@xstyled/system'
       - lodash
+      - react-is
+      - redux
+    dev: false
+
+  /@elliemae/ds-dialog@3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9):
+    resolution: {integrity: sha512-9/LoTb+Uw8VDErwDh15ZOUu9aE/UQPJBfcgY8QJvQajYOJDV55sJsEkGbWEZNQv8XlcloIFEOYEukUq1OJKo4w==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      styled-components: ~5.3.9
+    dependencies:
+      '@elliemae/ds-button': 3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9)
+      '@elliemae/ds-icons': 3.20.4(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-system': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      lodash: 4.17.21
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+      uid: 2.0.1
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@elliemae/pui-theme'
+      - '@types/react'
       - react-is
       - redux
     dev: false
@@ -1208,9 +1337,6 @@ packages:
       react-dom: ^17.0.2
       styled-components: ~5.3.9
       styled-system: ^5.1.5
-    peerDependenciesMeta:
-      react:
-        optional: true
     dependencies:
       '@elliemae/ds-props-helpers': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-system': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
@@ -1240,6 +1366,18 @@ packages:
 
   /@elliemae/ds-hidden@3.20.3(react-dom@17.0.2)(react@17.0.2):
     resolution: {integrity: sha512-yZfNmSgRonaJWzm7Oy4Z3v5x0WTZPJk+AkmW8wBiR0Us3I9jnDP3EV67ck9j4M1lGluJrFD/aVxu88OtnzKH8A==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+    dependencies:
+      react: 17.0.2
+      react-spring: 8.0.27(react-dom@17.0.2)(react@17.0.2)
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
+
+  /@elliemae/ds-hidden@3.20.4(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-l8hEsGp3UlGUKeX3mbG/6X13vdrexfz5eNWvDIr+q59iusHXNzjN+gflr7hg6VynEaVNjF7K1xw88Wk7DK8czg==}
     engines: {node: '>=16', pnpm: '>=6'}
     peerDependencies:
       react: ^17.0.2
@@ -1295,6 +1433,28 @@ packages:
       '@elliemae/ds-classnames': 3.20.3(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-props-helpers': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-system': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@xstyled/system': 3.7.5
+      lodash: 4.17.21
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+    transitivePeerDependencies:
+      - '@elliemae/pui-theme'
+      - '@types/react'
+    dev: false
+
+  /@elliemae/ds-icons@3.20.4(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-smw06VzbBTR740KeEuEpuvnPwINFbGzcOTcvtQGCL+t8iPOuxLxt2N2Aad4XpM2BBiW8N32EYuBejr+vziDAig==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      lodash: ^4.17.21
+      react: ~17.0.2
+      react-dom: ^17.0.2
+      styled-components: ~5.3.9
+    dependencies:
+      '@elliemae/ds-classnames': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-system': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@xstyled/system': 3.7.5
       lodash: 4.17.21
       react: 17.0.2
@@ -1410,14 +1570,31 @@ packages:
     peerDependencies:
       react: ^17.0.2
       react-dom: ^17.0.2
-    peerDependenciesMeta:
-      react:
-        optional: true
     dependencies:
       '@elliemae/ds-backdrop': 3.20.3(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-classnames': 3.20.3(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-portal': 3.20.3(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-props-helpers': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+    transitivePeerDependencies:
+      - '@elliemae/pui-theme'
+      - '@types/react'
+      - lodash
+      - styled-components
+    dev: false
+
+  /@elliemae/ds-overlay@3.20.4(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-qykEpE2wc7XJKayNjRgkbGH19PiOUDl9ecX+wsPJwh7Am1vzKiDPwarR8FXO5r7RcuwiVkRa+yOyN7HFJFZEOQ==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@elliemae/ds-backdrop': 3.20.4(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-classnames': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-portal': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
     transitivePeerDependencies:
@@ -1521,6 +1698,33 @@ packages:
       - react-is
     dev: false
 
+  /@elliemae/ds-popover@3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2):
+    resolution: {integrity: sha512-9P0uUXEPw/qAdVQG2q2fxWRa64utA4IPI6FNcBW91/DSOVl92h/lQszxC+dR+GqmVtaIhq/gqnBcOB8Bo9fz2w==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      lodash: ^4.17.21
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@elliemae/ds-classnames': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-hidden': 3.20.4(react-dom@17.0.2)(react@17.0.2)
+      '@elliemae/ds-popper': 3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+      '@elliemae/ds-portal': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-system': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      lodash: 4.17.21
+      popper.js: 1.16.1
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@elliemae/pui-theme'
+      - '@types/react'
+      - react-is
+    dev: false
+
   /@elliemae/ds-popper@3.20.2(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2):
     resolution: {integrity: sha512-SW0Ez1gEMzmP8OjCpbRJefPTvrT/ckn+fyRCT11I4RWV7TmqTjxzq/hqDkWki7tfMN5YjXFEN5eYxRNEx6RHiw==}
     engines: {node: '>=16', pnpm: '>=6'}
@@ -1557,6 +1761,31 @@ packages:
       '@elliemae/ds-props-helpers': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-system': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/ds-utilities': 3.20.3(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/react-popper': 1.0.2(react@17.0.2)
+      memoize-one: 6.0.0
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      react-spring: 8.0.27(react-dom@17.0.2)(react@17.0.2)
+      styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@elliemae/pui-theme'
+      - '@types/react'
+      - lodash
+      - react-is
+    dev: false
+
+  /@elliemae/ds-popper@3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2):
+    resolution: {integrity: sha512-KdohRZ3H9aFbQfQSoM0lGhOTH9Wmm953LYZHEdACgOJd+PCWSw/dlp1DCDYuOYugERCpoHT8L0Zxx34VxztCDw==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@elliemae/ds-overlay': 3.20.4(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-system': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/react-popper': 1.0.2(react@17.0.2)
       memoize-one: 6.0.0
       react: 17.0.2
@@ -1651,6 +1880,23 @@ packages:
       - styled-components
     dev: false
 
+  /@elliemae/ds-portal@3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-0YN+eiWyMjktJAcQn9h0/spRiX1RipzYsNBkKd8J9kBv6US3Tm/1UQbrt7aRir8yC16dejWNz3OMwNDpSxCG8g==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@elliemae/ds-classnames': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+    transitivePeerDependencies:
+      - '@types/react'
+      - lodash
+      - styled-components
+    dev: false
+
   /@elliemae/ds-props-helpers@3.20.2(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
     resolution: {integrity: sha512-2nxsI8XbaAs6rzVE6zJ3Yl1NVmFEZYeSr1asHIjENzPr2g++QCblyWDfeuCtbBEwm/Uh8GUYyoSKOFMKUkm6pA==}
     engines: {node: '>=16', pnpm: '>=6'}
@@ -1679,6 +1925,25 @@ packages:
       react-dom: ^17.0.2
     dependencies:
       '@elliemae/ds-system': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      fast-deep-equal: 3.1.3
+      lodash: 4.17.21
+      prop-types: 15.8.1
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+    transitivePeerDependencies:
+      - '@elliemae/pui-theme'
+      - styled-components
+    dev: false
+
+  /@elliemae/ds-props-helpers@3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-Pvkrwl4WhTdgH+5KkPxX6TBR+VmYjVgBumlrToVtvfaojTYap/mJeZ/WrAKtjCthTzRasIuM9u1+XTVPe9sOjQ==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      lodash: ^4.17.21
+      react: ~17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@elliemae/ds-system': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       fast-deep-equal: 3.1.3
       lodash: 4.17.21
       prop-types: 15.8.1
@@ -1772,6 +2037,37 @@ packages:
       - styled-components
     dev: false
 
+  /@elliemae/ds-shared@3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)(redux@4.2.1)(styled-components@5.3.9):
+    resolution: {integrity: sha512-pjGuDPEDR+oZ/IcRxA4CCTQKAq7rPB63D6SfVgWstCmffaLL/5ao860wp8++JO1p8B6XEZ1jErP6SQ4mZfryAQ==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      lodash: ~4.17.21
+      react: ~17.0.2
+      react-dom: ~17.0.2
+    dependencies:
+      '@elliemae/ds-popover': 3.20.4(@babel/core@7.22.5)(@elliemae/pui-theme@2.7.0)(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+      '@elliemae/ds-utilities': 3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      hoist-non-react-statics: 3.3.2
+      hotkeys-js: 3.10.4
+      lodash: 4.17.21
+      prop-types: 15.8.1
+      raf: 3.4.1
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      react-spring: 8.0.27(react-dom@17.0.2)(react@17.0.2)
+      react-virtualized-auto-sizer: 1.0.20(react-dom@17.0.2)(react@17.0.2)
+      react-window: 1.8.9(react-dom@17.0.2)(react@17.0.2)
+      table-resolver: 4.1.1(redux@4.2.1)
+      uuid: 8.3.2
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@elliemae/pui-theme'
+      - '@types/react'
+      - react-is
+      - redux
+      - styled-components
+    dev: false
+
   /@elliemae/ds-system@3.20.2(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
     resolution: {integrity: sha512-SHqh/kN5oVLFnXfecXeDuCD9XBaSUrSD5xUPEiGKzw7OwjZFjVxM3DAtY+oSF5sNPNZyehe6NyjCH6d93yKqxg==}
     engines: {node: '>=16', pnpm: '>=6'}
@@ -1795,6 +2091,27 @@ packages:
 
   /@elliemae/ds-system@3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
     resolution: {integrity: sha512-x125M/hOs+dD73qxbb7VPjrqQiOez7abXO33NKYDemC9ME7EbGgP3lkBic3abD9QtIfzIiosOKB8hOTXpBn6ag==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      '@elliemae/pui-theme': ^2.7.0
+      lodash: ^4.17.21
+      react: ~17.0.2
+      react-dom: ^17.0.2
+      styled-components: ~5.3.9
+    dependencies:
+      '@elliemae/pui-theme': 2.7.0(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@xstyled/styled-components': 3.7.5(styled-components@5.3.9)
+      '@xstyled/system': 3.7.5
+      '@xstyled/util': 3.7.0
+      lodash: 4.17.21
+      polished: 3.6.7
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      styled-components: 5.3.9(@babel/core@7.22.5)(react-dom@17.0.2)(react-is@16.8.0)(react@17.0.2)
+    dev: false
+
+  /@elliemae/ds-system@3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-FJ/6gbN7p4INaX07ST/fqK99t54F8v93z1emaT7pZDhX0c/f9FC4udBQluKfnwdQ2qdipN5JNKQheAYpIhIQbg==}
     engines: {node: '>=16', pnpm: '>=6'}
     peerDependencies:
       '@elliemae/pui-theme': ^2.7.0
@@ -1958,11 +2275,33 @@ packages:
       lodash: ^4.17.21
       react: ~17.0.2
       react-dom: ^17.0.2
-    peerDependenciesMeta:
-      react:
-        optional: true
     dependencies:
       '@elliemae/ds-props-helpers': 3.20.3(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      '@elliemae/pui-theme': 2.7.0(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
+      hotkeys-js: 3.10.4
+      lodash: 4.17.21
+      raf: 3.4.1
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      resize-observer-polyfill: 1.5.1
+      uncontrollable: 7.2.1(react@17.0.2)
+      use-force-update: 1.0.11(react@17.0.2)
+      use-measure: 0.3.0(react@17.0.2)
+      use-onclickoutside: 0.4.1(@types/react@18.0.21)(react@17.0.2)
+    transitivePeerDependencies:
+      - '@types/react'
+      - styled-components
+    dev: false
+
+  /@elliemae/ds-utilities@3.20.4(@types/react@18.0.21)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9):
+    resolution: {integrity: sha512-Ca7zlr4lXhgj54OAeTVSIYoIQVX0C0bsQzwREsxbGRrFglVq34aExK8mlZ31XPf3F87XC1qYz80lFGfG9FMTkg==}
+    engines: {node: '>=16', pnpm: '>=6'}
+    peerDependencies:
+      lodash: ^4.17.21
+      react: ~17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@elliemae/ds-props-helpers': 3.20.4(@elliemae/pui-theme@2.7.0)(lodash@4.17.21)(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       '@elliemae/pui-theme': 2.7.0(react-dom@17.0.2)(react@17.0.2)(styled-components@5.3.9)
       hotkeys-js: 3.10.4
       lodash: 4.17.21

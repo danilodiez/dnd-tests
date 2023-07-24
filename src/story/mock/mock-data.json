@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Test Folder X",
+    "name": "*Arm Disclosure",
     "isGroup": true,
     "children": [
       {
@@ -28,7 +28,7 @@
   },
   {
     "id": 2,
-    "name": "Test Folder XX",
+    "name": "*Closing Disclosure",
     "isGroup": true,
     "children": [
       {
@@ -50,7 +50,7 @@
   },
   {
     "id": 4,
-    "name": "Test Folder Y",
+    "name": "*CustomFormeSign",
     "isGroup": true,
     "children": [
       {
@@ -68,13 +68,13 @@
   {
     "children": [],
     "id": 7,
-    "name": "Item with no children",
+    "name": "*Loan Estimate",
     "isGroup": true
   },
   {
     "children": [],
     "id": 8,
     "isGroup": true,
-    "name": "Item with no children but is group"
+    "name": "*Loan Submission"
   }
 ]

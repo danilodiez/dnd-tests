@@ -25,6 +25,7 @@ export const DraggableElement = ({
     data: { node, ownerTree },
   });
 
+  // We need to detect globalDragging flag and selectedNodes list in order to handle multiple DnD
   const [isGlobalDragging, setIsGlobalDragging] = React.useState(false);
   const [selectedNodes, setSelectedNodes] = React.useState([]);
 
@@ -33,7 +34,7 @@ export const DraggableElement = ({
   const setItems = useItemsStore((state) => state.setItems);
   const resetStore = useItemsStore((state) => state.resetStore);
 
-  // If we have files from 2 sections we won't allow the user to drag and drop
+  // If we have files from 2 different sections we won't allow the user to drag and drop
   const canDrag = React.useMemo(() => {
     if (selectedItems.length) {
       const sections = selectedItems.map((item) => item.section);
@@ -44,6 +45,7 @@ export const DraggableElement = ({
     return true;
   }, [selectedItems, isItemDragging]);
 
+  // Styles to set when elements are dragged
   const style =
     transform && isItemDragging && canDrag
       ? {
@@ -55,14 +57,14 @@ export const DraggableElement = ({
   const handleSelection = () => {
     const sections = selectedItems.map((item) => item.section);
 
-    // We reset the selection if we try to select from another folder or container
+    // We reset the selection if we try to select from another folder or different section 
     if (!sections.includes(section)) {
       resetStore();
     }
     setItems({ node, section });
   };
 
-  // We need this to highlight the gray background of items that are being dragged
+  // We need this to highlight the grey background of items that are being dragged
   useDndMonitor({
     onDragStart() {
       setIsGlobalDragging(true);
@@ -72,9 +74,11 @@ export const DraggableElement = ({
     },
   });
 
+  // Reads the selection from the store
   React.useEffect(() => {
     setSelectedNodes(selectedItems.map((item) => item.node));
   }, [selectedItems]);
+
   return (
     <>
       {isItemDragging && canDrag ? (
@@ -88,6 +92,7 @@ export const DraggableElement = ({
       ) : null}
       <Grid
         cols={["32px", "1fr"]}
+        // Shuttle like selection styles
         borderLeft={
           selectedNodes.includes(node)
             ? "4px solid brand-600"
@@ -99,6 +104,7 @@ export const DraggableElement = ({
         data-depth={model?.depth}
         ref={setNodeRef}
         {...attributes}
+        // Set the background of dragged element(s) to grey
         style={
           isItemDragging || (isGlobalDragging && selectedNodes.includes(node))
             ? {

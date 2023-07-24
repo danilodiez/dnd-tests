@@ -19,23 +19,23 @@ type FlatNode = {
   };
   depth: number;
 };
-type FlatNodes = FlatNode[];
 
-const opts = {
-  getUniqueId: (node: any) => `${node.id}`,
-};
 
 export const ExampleTree = React.memo(() => {
 
   const selectedItems = useItemsStore((state) => state.selected);
-  const setItems = useItemsStore(state => state.setItems);
 
+  // The useTreeviewAsDSTree hook allows us to use same data as we currently have on eFolder
   const docFoldersTree = useTreeviewAsDSTree(TreeViewCompatibleData);
+
+  // This is the old useDSTree structure
   // const docFoldersTree = useDSTree(DocFolders, opts);
 
+  // Use the Tress as flattened structures
   const FlatTreeWithoutRootDocs = React.useMemo(() => {
     // This returns us an array of nodes
     const fullTree = docFoldersTree.flatten();
+    // Remove the first element --> the pseudoroot
     fullTree.shift();
     return fullTree;
   }, [docFoldersTree.hash]);
@@ -66,6 +66,7 @@ export const ExampleTree = React.memo(() => {
 
       // We have to create new nodes because if we don't we are gonna have collision of IDs
       if (selectedItems.length) {
+        // Multiple Dnd
         selectedItems.forEach((item) => {
         const newId = uuidv4();
         const newNode = {id: newId, originalNodeData: {id: newId, name: item.node.plainItem.originalNodeData.name}}
@@ -73,6 +74,7 @@ export const ExampleTree = React.memo(() => {
           startingTree.removeNode(item.node.dsId);
         });
       } else {
+        // Single Dnd
         const newId = uuidv4();
         const newNode = {id: newId, originalNodeData: {id: newId, name: grabbedNode.plainItem.originalNodeData.name}}
         destinationTree.addNode(newNode, { parent: parentNode });

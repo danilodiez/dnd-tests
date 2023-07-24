@@ -13,6 +13,10 @@ type BoxWithTitleProps = {
   section: string;
 };
 
+// We could separate this BoxWithTitle in two different containers,
+// one for Doc Folders and the other one for Unassigned,
+// We just used BoxWithTitle because it accelerated the development
+
 export const BoxWithTitle = React.memo(
   ({ title, children, section }: BoxWithTitleProps) => {
     const [itemsSelectedPerSection, setItemsSelectedPerSection] = useState([]);
@@ -20,6 +24,7 @@ export const BoxWithTitle = React.memo(
     // store
     const selectedItems = useItemsStore((state) => state.selected);
 
+    // Filtering with the section to count items separately within same Store
     useEffect(() => {
       const itemsPerSection = selectedItems?.filter(
         (item) => item.section === section
@@ -34,7 +39,7 @@ export const BoxWithTitle = React.memo(
         m="xxs"
         gutter="xxxs"
       >
-        <Grid cols={["65%", "auto"]}>
+        <Grid cols={["65%", "auto"]} alignItems={section === 'viewer' ? '' : "center"}> 
           <Grid cols={["auto"]}>
             <DSTypography variant="h4">
               {title}{" "}
@@ -42,6 +47,8 @@ export const BoxWithTitle = React.memo(
                 `| ${itemsSelectedPerSection?.length}`}
             </DSTypography>
           </Grid>
+          { section !== "viewer" ? 
+
           <Grid cols={["auto", "auto", "auto"]} justifyContent="flex-end">
             <DSButtonV2 buttonType="icon" aria-label="Upload">
               <UploadFile />
@@ -53,6 +60,8 @@ export const BoxWithTitle = React.memo(
               <MoreOptionsVert />
             </DSButtonV2>
           </Grid>
+        : null
+          } 
         </Grid>
         <Grid>{children}</Grid>
       </StyledBoxWrapper>
