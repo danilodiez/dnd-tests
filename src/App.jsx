@@ -32,11 +32,11 @@ export default function App() {
   const sensors = useSensors(pointerSensor, keyboardSensor);
 
   // store
-  const resetStore = useItemsStore((state) => state.resetStore);
+  const resetItemsStore = useItemsStore((state) => state.resetStore);
 
   // We reset the component styles and selection when the Dnd is over
   const resetDnD = () => {
-    resetStore();
+    resetItemsStore();
     styleContainerRef.current.style.cssText = "";
   };
 

@@ -29,6 +29,8 @@ export const DraggableElement = ({
   const [isGlobalDragging, setIsGlobalDragging] = React.useState(false);
   const [selectedNodes, setSelectedNodes] = React.useState([]);
 
+  const [isHover, setIsHover] = React.useState(false);
+
   // store
   const selectedItems = useItemsStore((state) => state.selected);
   const setItems = useItemsStore((state) => state.setItems);
@@ -57,7 +59,7 @@ export const DraggableElement = ({
   const handleSelection = () => {
     const sections = selectedItems.map((item) => item.section);
 
-    // We reset the selection if we try to select from another folder or different section 
+    // We reset the selection if we try to select from another folder or different section
     if (!sections.includes(section)) {
       resetStore();
     }
@@ -79,6 +81,13 @@ export const DraggableElement = ({
     setSelectedNodes(selectedItems.map((item) => item.node));
   }, [selectedItems]);
 
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
   return (
     <>
       {isItemDragging && canDrag ? (
@@ -91,6 +100,8 @@ export const DraggableElement = ({
         </DragOverlay>
       ) : null}
       <Grid
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         cols={["32px", "1fr"]}
         // Shuttle like selection styles
         borderLeft={
@@ -114,6 +125,7 @@ export const DraggableElement = ({
               }
             : { backgroundColor: "#fff", position: "relative" }
         }
+        bg={isHover ? "#EBF6FF !important" : " "}
       >
         <DSButtonV2
           buttonType="icon"
